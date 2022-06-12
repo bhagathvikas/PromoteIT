@@ -3,11 +3,11 @@ import useStyles from './style';
 import { TextField,Button,Typography,Paper  } from "@material-ui/core";
 import FileBase from 'react-file-base64';
 import {useDispatch,useSelector} from 'react-redux';
-import {createPost} from '../../actions/posts';
+import {createPost,upDatePost} from '../../actions/posts';
 
  const Form = ({currentId,setCurrentID})=>{
      const dispatch = useDispatch();
-     const post = useSelector((state)=>currentId?state.posts.find((p)=> p._id == currentId ): null);
+     const post = useSelector((state)=>currentId?state.posts.find((p)=> p._id === currentId ): null);
      useEffect(()=>{
         if(post) setPostData(post);
     },[post]);

@@ -9,7 +9,7 @@ import {useDispatch} from 'react-redux';
 import Form from './components/Form/Forms.js';
 
 const App = ()=>{
-  const [currentId,setCureentId] = useState(null);
+  const [currentId,setCurrentId] = useState(null);
   const classes = useStyles();
   const dispatch = useDispatch();
 
@@ -26,10 +26,10 @@ const App = ()=>{
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
             <Grid item xs={12} sm={7}>
-              <Posts setCureentId={setCureentId}  />
+              <Posts setCurrentId={setCurrentId}  />
             </Grid>
             <Grid item xs={12} sm={4}>
-              <Form currentId={currentId} setCureentId={setCureentId}/>
+              <Form currentId={currentId} setCurrentId={setCurrentId} />
             </Grid>
           </Grid>
         </Container>
