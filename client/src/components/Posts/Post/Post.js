@@ -1,11 +1,11 @@
 import React from "react";
 import useStyles from './style';
-import {Card,CardAction,CArdContent,CardMedia,Button,Typography} from '@material-ui/core';
-import ThumbUpAltIcon from '@material-ui/core/ThumbUpAlt';
-import DelteIcon from '@material-ui/core/Delete';
-import MoreHorizIcon from '@material-ui/core/MoreHorizIcon'
+import { Card, CardActions, CardContent, CardMedia, Button, Typography } from '@material-ui/core/';
+//import ThumbUpAltIcon from '@material-ui/core/ThumbUpAlt';
+import DeleteIcon from '@material-ui/icons/Delete';
+import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 
- const Post = ()=>{
+ const Post = ({post,setCurrentId})=>{
     const classes = useStyles();
      return(
          <Card className={classes.card} >
@@ -17,10 +17,28 @@ import MoreHorizIcon from '@material-ui/core/MoreHorizIcon'
 
              </div>
              <div className={classes.overlay2}>
-                 <Button style={{color:'white'}} size="small" onClick={}></Button>
+                 <Button style={{color:'white'}} size="small" onClick={()=>setCurrentId._id}>
+                     <MoreHorizIcon fontSize="default"/>
+                 </Button>
 
 
              </div>
+             <div className={classes.details}>
+                 <Typography variant="body2" color="textSecondary"> {post.tags.map((tag)=>`#${tag} `)}</Typography>
+             </div>
+             <CardContent>
+             <Typography className={classes.title} variant="body2" color="textSecondary"> {post.message}</Typography>
+             </CardContent>
+             <CardActions className={classes.action}>
+
+                 <Button size="small" color="primary" onClick={()=>{}}>
+                     <DeleteIcon fontSize="small"/>
+
+                 </Button>
+
+             </CardActions>
+             
+
 
          </Card>
      );
