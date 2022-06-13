@@ -12,7 +12,7 @@ import {createPost,upDatePost} from '../../actions/posts';
         if(post) setPostData(post);
     },[post]);
      const [postData,setPostData] =    useState({
-         newpost:'',title:'',message:'',tags:'',selectedFile:''
+         newPost:'',title:'',message:'',tags:'',selectedFile:''
      });
      
     const classes = useStyles();
@@ -32,8 +32,8 @@ import {createPost,upDatePost} from '../../actions/posts';
 
     }
     const clear = ()=>{
-        setCurrentID(null);
-        setPostData({ creator: '', title: '', message: '', tags: '', selectedFile: '' });
+        // setCurrentID(0);
+        setPostData({ newPost: '', title: '', message: '', tags: '', selectedFile: '' });
 
     }
 
@@ -42,7 +42,7 @@ import {createPost,upDatePost} from '../../actions/posts';
          <Paper className={classes.paper}>
              <form autoComplete="off" noValidate className={`${classes.root}${classes.form}`} onSubmit = {handleSubmit}>
                  <Typography variant="h6">{currentId ? 'Editing' : 'Creating'} Post</Typography>
-                 <TextField name="newpost" variant="outlined" label="newpost" fullWidth value={postData.newpost}onChange={(e)=>setPostData({...postData,newpost:e.target.value})}/>
+                 <TextField name="newpost" variant="outlined" label="newpost" fullWidth value={postData.newPost}onChange={(e)=>setPostData({...postData,newPost:e.target.value})}/>
                  <TextField name="title" variant="outlined" label="title" fullWidth value={postData.title}onChange={(e)=>setPostData({...postData,title:e.target.value})}/>
                  <TextField name="message" variant="outlined" label="message" fullWidth value={postData.message}onChange={(e)=>setPostData({...postData,message:e.target.value})}/>
                  <TextField name="tags" variant="outlined" label="tags" fullWidth value={postData.tags}onChange={(e)=>setPostData({...postData,tags:e.target.value})}/>
