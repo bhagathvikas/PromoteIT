@@ -7,6 +7,7 @@ import {getPosts} from './actions/posts'
 import useStyles from './styles';
 import {useDispatch} from 'react-redux';
 import Form from './components/Form/Forms.js';
+import NavBar from '../src/components/NavBar/NavBar';
 
 const App = ()=>{
   const [currentId,setCurrentId] = useState(null);
@@ -18,10 +19,7 @@ const App = ()=>{
   },[currentId,dispatch]);
   return(
     <Container maxWidth="lg">
-      <AppBar className={classes.appBar} position="static" color="inherit">
-        <Typography className={classes.heading} variant="h2" align="center"></Typography>
-        <img className={classes.image} src={logo} alt="icon" height="60" />
-      </AppBar>
+      <NavBar/>
       <Grow in>
         <Container>
           <Grid container justify="space-between" alignItems="stretch" spacing={3}>
