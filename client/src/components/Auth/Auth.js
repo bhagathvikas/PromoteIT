@@ -10,9 +10,11 @@ import Icon from './icon'
 import Input from './input'
 import {useDispatch} from 'react-redux'
 
+const initialState={firstName:'',lastName:'', Email:'',Password:'',confimPassword:''};
 const Auth = () => {
     const [showPassword,setShowPassword] = useState(false)
     const [isSignUp,setisSignUp] = useState(false)
+    const [formData,setFormData] = useState(initialState)
 
     const classes = useStyle()
     const history = useNavigate()
@@ -20,10 +22,13 @@ const Auth = () => {
     
     
     const handleShowPassword = () => setShowPassword((prevShowPassword) => !prevShowPassword);
-    const handleSubmit = () =>{
+    const handleSubmit = (e) =>{
+        e.preventDefault()
+        console.log(formData)
 
     }
-    const handleChange = () =>{
+    const handleChange = (e) =>{
+        setFormData({...formData,[e.traget.name]: e.traget.value})
 
     }
     const switchMode = () =>{
@@ -70,12 +75,13 @@ const Auth = () => {
                         <>
                         <Grid xs={6} md={12}>
                         <Input name="firstName" label="First Name" handleChange={handleChange} autoFocus half/>
+                        <Input name="lastName" label="Last Name" handleChange={handleChange} autoFocus half/>
                         </Grid>
                         </>
                     )
                 }
                 <Input name="Email" label="Email" type="Email" handleChange={handleChange} autoFocus half/>
-                <Input name="Password"  label="First Name" handleChange={handleChange} type={showPassword?'text':'password' } handleShowPassword={handleShowPassword}/>
+                <Input name="Password"  label="Password " handleChange={handleChange} type={showPassword?'text':'password' } handleShowPassword={handleShowPassword}/>
                 {isSignUp && <Input name="confirmPassword" label="Confirm Password" handleChange={handleChange} type="password"/>}
             </Grid>
             <Button type="submit" className={classes.submit} fullWidth variant="contained" color="primary"> {isSignUp ? "SignUp" : "SignIn"} </Button>
