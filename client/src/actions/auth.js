@@ -1,0 +1,13 @@
+import React from 'react'
+import {AUTH} from '../constants/actionTypes'
+import * as api from '../api/index'
+
+export const signin = ({formData,history}) =>async(dispatch) {
+try {
+  history.push('/')
+  
+} catch (error) {
+  console.log(error)
+  
+}
+}
