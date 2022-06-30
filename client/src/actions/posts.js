@@ -4,13 +4,22 @@ import * as api from '../api/index.js';
 
 export const getPosts = () => async (dispatch) => {
   try {
-    const { data } = await api.fetchPosts();
+    const { data:{data} } = await api.fetchPosts();
 
     dispatch({ type: FETCH_ALL, payload: data });
   } catch (error) {
-    console.log(error.message);
+    console.log(error);
   }
 };
+
+export const getPostBySearch = (searchQuery) => async(dispatch)=>{
+  try {
+    const {data} = await api.fetchBySearch(searchQuery)
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }
+}
 
 export const createPost = (post) => async (dispatch) => {
   try {
