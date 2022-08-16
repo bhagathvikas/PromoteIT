@@ -8,9 +8,9 @@ const router = express.Router();
 
 export const getPosts = async (req, res) => { 
     try {
-        const postMessages = await PostMessage.find();
+        const posts = await PostMessage.find();
                 
-        res.status(200).json(postMessages);
+        res.status(200).json({data: posts});
     } catch (error) {
         res.status(404).json({ message: error.message });
     }
