@@ -6,6 +6,9 @@ import {Link, useNavigate,useLocation } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import decode from 'jwt-decode'
 
+import * as actionTypes from '../../constants/actionTypes'
+
+
 
 const NavBar = ( ) => {
     const classes = useStyles();
@@ -25,7 +28,7 @@ const NavBar = ( ) => {
     },[location])
 
     const logout = () => {
-      dispatch({type:'LOGOUT'})
+      dispatch({type:actionTypes.LOGOUT})
       history('/')
       setUser(null)
     }

@@ -5,6 +5,7 @@ import NavBar from './components/NavBar/NavBar'
 import Home from  './components/home/Home'
 import AUTH from './components/Auth/Auth.js'
 import PostDetails from './components/PostDetails/PostDetails';
+import SearchTags  from './components/SearchTags/SearchTags'
 
 const App = ()=>{
 
