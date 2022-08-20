@@ -2,15 +2,16 @@ import { makeStyles } from '@material-ui/core/styles';
 
 export default makeStyles((theme) => ({
   media: {
+    
     borderRadius: '20px',
     objectFit: 'cover',
-    width: '100%',
+    width: '50%',
     maxHeight: '600px',
 
   },
   card: {
     display: 'flex',
-    width: '100%',
+    
     [theme.breakpoints.down('sm')]: {
       flexWrap: 'wrap',
       flexDirection: 'column',
@@ -22,7 +23,10 @@ export default makeStyles((theme) => ({
     flex: 1,
   },
   imageSection: {
-    marginLeft: '20px',
+    margin: 'auto',
+    width: '500px',
+    align: 'center',
+    marginRight: '20px',
     [theme.breakpoints.down('sm')]: {
       marginLeft: 0,
     },

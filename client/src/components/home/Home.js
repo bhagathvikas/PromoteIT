@@ -83,16 +83,18 @@ const Home = () => {
 
               </AppBar>
               <Form currentId={currentId} setCurrentId={setCurrentId} />
-              {(!searchQuery && !tags.length) && (
+             
+            </Grid>
+          </Grid>
+          {(!searchQuery && !tags.length) && (
                 <Paper className={classes.pagination} evation={6}>
                   <Paginatation page={page}/>
 
                 </Paper>
               )}
-            </Grid>
-          </Grid>
         </Container>
       </Grow>
+      
     )
 }
 export default Home;

@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { Avatar, Button, Paper, Grid, Typography, Container } from '@material-ui/core';
 
-import { GoogleLogin } from 'react-google-login';
+import InstagramLogin from "react-instagram-login";
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import {useNavigate} from 'react-router-dom'
 import Icon from './icon';
@@ -54,7 +54,9 @@ const SignUp = () => {
     }
   };
 
-  const googleError = () => alert('Google Sign In was unsuccessful. Try again later');
+  const responseInstagram = (response) =>{
+    console.log("insta error"+response)
+  }
 
   const handleChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
 
@@ -80,17 +82,12 @@ const SignUp = () => {
           <Button type="submit" fullWidth variant="contained" color="primary" className={classes.submit}>
             { isSignup ? 'Sign Up' : 'Sign In' }
           </Button>
-          <GoogleLogin
-            clientId="564033717568-e5p23rhvcs4i6kffgsbci1d64r8hp6fn.apps.googleusercontent.com"
-            render={(renderProps) => (
-              <Button className={classes.googleButton} color="primary" fullWidth onClick={renderProps.onClick} disabled={renderProps.disabled} startIcon={<Icon />} variant="contained">
-                Google Sign In
-              </Button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleError}
-            cookiePolicy="single_host_origin"
-          />
+          <InstagramLogin
+    clientId="5569772636416040"
+    buttonText="instaLogin"
+    onSuccess={responseInstagram}
+    onFailure={responseInstagram}
+  />,
           <Grid container justify="flex-end">
             <Grid item>
               <Button onClick={switchMode}>

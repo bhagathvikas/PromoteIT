@@ -8,18 +8,18 @@ import { createPost, updatePost } from '../../actions/posts';
 import {useNavigate} from 'react-router-dom'
 
 const Form = ({ currentId, setCurrentId }) => {
-  const [postData, setPostData] = useState({  title: '', message: '', tags: '', selectedFile: '' });
-  const post = useSelector((state) => (currentId ? state.posts.posts.find((message) => message._id === currentId) : null));
+  const [postData, setPostData] = useState({  requirement: '', details: '', tags: [], selectedFile: '' ,followers:'',reach:'',budget:''});
+  const post = useSelector((state) => (currentId ? state.posts.posts.find((details) => details._id === currentId) : null));
   const dispatch = useDispatch();
   const user = JSON.parse(localStorage.getItem('profile'))
   const navigate = useNavigate()
   const classes = useStyles();
   const clear = () => {
     setCurrentId(0);
-    setPostData({  title: '', message: '', tags: '', selectedFile: '' });
+    setPostData({  requirement: '', details: '', tags: '', selectedFile: '',followers:'',reach:'',budget:'' });
   };
   useEffect(() => {
-    if(!post?.title) clear()
+    if(!post?.requirement) clear()
     if (post) setPostData(post);
   }, [post]);
 
@@ -60,10 +60,13 @@ const Form = ({ currentId, setCurrentId }) => {
   return (
     <Paper className={classes.paper}>
       <form autoComplete="off" noValidate className={`${classes.root} ${classes.form}`} onSubmit={handleSubmit}>
-        <Typography variant="h6">{currentId ? `Editing "${post.title}"` : 'Creating a Memory'}</Typography>
+        <Typography variant="h6">{currentId ? `Updatig"${post.requirement}"` : 'Post Promotions'}</Typography>
         
-        <TextField name="title" variant="outlined" label="Title" fullWidth value={postData.title} onChange={(e) => setPostData({ ...postData, title: e.target.value })} />
-        <TextField name="message" variant="outlined" label="Message" fullWidth multiline rows={4} value={postData.message} onChange={(e) => setPostData({ ...postData, message: e.target.value })} />
+        <TextField name="Requirement" variant="outlined" label="Requirement" fullWidth value={postData.requirement} onChange={(e) => setPostData({ ...postData, requirement: e.target.value })} />
+        <TextField name="details" variant="outlined" label="Details" fullWidth multiline rows={4} value={postData.details} onChange={(e) => setPostData({ ...postData, details: e.target.value })} />
+        <TextField name="followers" variant="outlined" label="Followers" fullWidth value={postData.followers} onChange={(e) => setPostData({ ...postData, followers: e.target.value })} />
+        <TextField name="reach" variant="outlined" label="Reach" fullWidth value={postData.reach} onChange={(e) => setPostData({ ...postData, reach: e.target.value })} />
+        <TextField name="budget" variant="outlined" label="Budget" fullWidth value={postData.budget} onChange={(e) => setPostData({ ...postData, budget: e.target.value })} />
         <div style={{padding: '50px 0',width: '94%'}}>
           <ChipInput
           name="tags"
